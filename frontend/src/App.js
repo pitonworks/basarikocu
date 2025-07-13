@@ -360,7 +360,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
                         onClick={() => deleteGoal(goal.id)}
                         className="px-4 py-2 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
                       >
-                        Delete
+                        Sil
                       </button>
                     </div>
                   </div>
