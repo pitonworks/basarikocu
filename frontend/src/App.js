@@ -496,26 +496,77 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
                           <ChevronDown className="w-5 h-5 text-secondary-500" />
                         )}
                       </div>
-                      <div className="prose prose-sm max-w-none">
-                        <ReactMarkdown
-                          remarkPlugins={[remarkGfm]}
-                          className="text-xl font-semibold text-secondary-900"
-                          components={{
-                            p: ({node, ...props}) => <p className="my-0" {...props} />,
-                            a: ({node, children, ...props}) => (
-                              <a 
-                                className="text-primary-600 hover:text-primary-800" 
-                                {...props}
-                                aria-label={typeof children === 'string' ? children : 'Link'}
-                                role="link"
-                              >
-                                {children}
-                              </a>
-                            ),
-                          }}
-                        >
-                          {goal.description}
-                        </ReactMarkdown>
+                      <div className="flex-1">
+                        <div className="prose prose-sm max-w-none">
+                          <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            className="text-xl font-semibold text-secondary-900"
+                            components={{
+                              p: ({node, ...props}) => <p className="my-0" {...props} />,
+                              a: ({node, children, ...props}) => (
+                                <a 
+                                  className="text-primary-600 hover:text-primary-800" 
+                                  {...props}
+                                  aria-label={typeof children === 'string' ? children : 'Link'}
+                                  role="link"
+                                >
+                                  {children}
+                                </a>
+                              ),
+                            }}
+                          >
+                            {goal.description}
+                          </ReactMarkdown>
+                        </div>
+                        
+                        {/* Goal Meta Info */}
+                        <div className="flex items-center gap-4 mt-3 text-sm text-secondary-600">
+                          {goal.category_id && (
+                            <div className="flex items-center">
+                              <span 
+                                className="w-3 h-3 rounded-full mr-1"
+                                style={{ backgroundColor: categories.find(c => c.id === goal.category_id)?.color || '#0ea5e9' }}
+                              />
+                              {categories.find(c => c.id === goal.category_id)?.name}
+                            </div>
+                          )}
+                          
+                          <div className={`px-2 py-1 rounded text-xs font-medium ${
+                            goal.priority === 'high' ? 'bg-red-100 text-red-800' :
+                            goal.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                            'bg-green-100 text-green-800'
+                          }`}>
+                            {goal.priority === 'high' ? 'Yüksek' : 
+                             goal.priority === 'medium' ? 'Orta' : 'Düşük'}
+                          </div>
+
+                          {goal.tags && goal.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-1">
+                              {goal.tags.map((tag, index) => (
+                                <span 
+                                  key={index}
+                                  className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs"
+                                >
+                                  #{tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+
+                          {goal.progress_percentage > 0 && (
+                            <div className="flex items-center">
+                              <div className="w-16 h-2 bg-secondary-200 rounded-full mr-2">
+                                <div 
+                                  className="h-2 bg-primary-500 rounded-full transition-all"
+                                  style={{ width: `${goal.progress_percentage}%` }}
+                                />
+                              </div>
+                              <span className="text-primary-600 font-medium">
+                                {Math.round(goal.progress_percentage)}%
+                              </span>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                     <div className="flex gap-2 flex-shrink-0" onClick={e => e.stopPropagation()}>
@@ -543,7 +594,7 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
                   </div>
                   
                   <AnimatePresence>
-                    {!collapsedGoals[goal.id] && goal.steps && (
+                    {!collapsedGoals[goal.id] && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
@@ -551,51 +602,63 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-6">
-                          <div className="flex items-center text-secondary-800 mb-3">
-                            <CheckCircle2 className="w-5 h-5 mr-2 text-primary-600" />
-                            <h4 className="font-semibold">Eylem Adımları</h4>
+                        {/* Progress Tracker */}
+                        {goal.steps && goal.steps.length > 0 && (
+                          <div className="mt-6">
+                            <ProgressTracker 
+                              goal={goal} 
+                              onProgressUpdate={(percentage) => handleProgressUpdate(goal.id, percentage)}
+                            />
                           </div>
-                          <div className="space-y-2">
-                            {goal.steps.map((step, index) => (
-                              <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                                className="flex items-start"
-                              >
-                                <span className="w-6 h-6 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 text-sm font-medium mr-3 flex-shrink-0 mt-1">
-                                  {index + 1}
-                                </span>
-                                <div className="flex-1 prose prose-sm max-w-none prose-p:mt-0 prose-p:mb-0">
-                                  <ReactMarkdown 
-                                    remarkPlugins={[remarkGfm]}
-                                    className="text-gray-600"
-                                    components={{
-                                      p: ({node, ...props}) => <p className="my-0" {...props} />,
-                                      a: ({node, children, ...props}) => (
-                                        <a 
-                                          className="text-primary-600 hover:text-primary-800" 
-                                          {...props}
-                                          aria-label={typeof children === 'string' ? children : 'Link'}
-                                          role="link"
-                                        >
-                                          {children}
-                                        </a>
-                                      ),
-                                      ul: ({node, ...props}) => <ul className="my-1" {...props} />,
-                                      ol: ({node, ...props}) => <ol className="my-1" {...props} />,
-                                      li: ({node, ...props}) => <li className="my-0.5" {...props} />,
-                                    }}
-                                  >
-                                    {step}
-                                  </ReactMarkdown>
-                                </div>
-                              </motion.div>
-                            ))}
+                        )}
+
+                        {goal.steps && (
+                          <div className="mt-6">
+                            <div className="flex items-center text-secondary-800 mb-3">
+                              <CheckCircle2 className="w-5 h-5 mr-2 text-primary-600" />
+                              <h4 className="font-semibold">Eylem Adımları</h4>
+                            </div>
+                            <div className="space-y-2">
+                              {goal.steps.map((step, index) => (
+                                <motion.div
+                                  key={index}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: index * 0.1 }}
+                                  className="flex items-start"
+                                >
+                                  <span className="w-6 h-6 flex items-center justify-center rounded-full bg-primary-100 text-primary-700 text-sm font-medium mr-3 flex-shrink-0 mt-1">
+                                    {index + 1}
+                                  </span>
+                                  <div className="flex-1 prose prose-sm max-w-none prose-p:mt-0 prose-p:mb-0">
+                                    <ReactMarkdown 
+                                      remarkPlugins={[remarkGfm]}
+                                      className="text-gray-600"
+                                      components={{
+                                        p: ({node, ...props}) => <p className="my-0" {...props} />,
+                                        a: ({node, children, ...props}) => (
+                                          <a 
+                                            className="text-primary-600 hover:text-primary-800" 
+                                            {...props}
+                                            aria-label={typeof children === 'string' ? children : 'Link'}
+                                            role="link"
+                                          >
+                                            {children}
+                                          </a>
+                                        ),
+                                        ul: ({node, ...props}) => <ul className="my-1" {...props} />,
+                                        ol: ({node, ...props}) => <ol className="my-1" {...props} />,
+                                        li: ({node, ...props}) => <li className="my-0.5" {...props} />,
+                                      }}
+                                    >
+                                      {step}
+                                    </ReactMarkdown>
+                                  </div>
+                                </motion.div>
+                              ))}
+                            </div>
                           </div>
-                        </div>
+                        )}
 
                         {goal.resources && goal.resources.length > 0 && (
                           <div className="mt-6">
