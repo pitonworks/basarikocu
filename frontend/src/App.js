@@ -9,11 +9,13 @@ import ProgressTracker from './components/ProgressTracker';
 import './App.css';
 
 function App() {
-  const [goals, setGoals] = useState(() => {
-    const savedGoals = localStorage.getItem('goals');
-    return savedGoals ? JSON.parse(savedGoals) : [];
-  });
+  const [goals, setGoals] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [newGoal, setNewGoal] = useState('');
+  const [newGoalCategory, setNewGoalCategory] = useState('');
+  const [newGoalTags, setNewGoalTags] = useState('');
+  const [newGoalPriority, setNewGoalPriority] = useState('medium');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -22,6 +24,12 @@ function App() {
   const [collapsedGoals, setCollapsedGoals] = useState(() => {
     const saved = localStorage.getItem('collapsedGoals');
     return saved ? JSON.parse(saved) : {};
+  });
+  const [stats, setStats] = useState({
+    total_goals: 0,
+    completed_goals: 0,
+    active_goals: 0,
+    completion_rate: 0
   });
 
   useEffect(() => {
