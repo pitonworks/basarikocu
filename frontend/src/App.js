@@ -377,7 +377,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
                         <div className="mt-6">
                           <div className="flex items-center text-secondary-800 mb-3">
                             <CheckCircle2 className="w-5 h-5 mr-2 text-primary-600" />
-                            <h4 className="font-semibold">Action Steps</h4>
+                            <h4 className="font-semibold">Eylem Adımları</h4>
                           </div>
                           <div className="space-y-2">
                             {goal.steps.map((step, index) => (
