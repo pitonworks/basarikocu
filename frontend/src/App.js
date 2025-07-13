@@ -241,7 +241,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
                   type="password"
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="Enter your OpenAI API key..."
+                  placeholder="OpenAI API anahtarınızı girin..."
                   className="flex-1 p-4 border-2 border-secondary-200 rounded-xl text-secondary-800 placeholder-secondary-400 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all"
                 />
                 <button
