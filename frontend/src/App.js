@@ -252,7 +252,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
                 </button>
               </div>
               <p className="mt-4 text-sm text-secondary-600">
-                Your API key is stored locally and never sent to any server.
+                API anahtarınız yerel olarak saklanır ve hiçbir sunucuya gönderilmez.
               </p>
             </div>
           ) : (
