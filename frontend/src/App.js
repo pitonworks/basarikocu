@@ -299,8 +299,56 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-3xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
+          {/* Statistics Section */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div className="bg-white rounded-xl shadow-soft-md p-6">
+              <div className="flex items-center">
+                <Target className="w-8 h-8 text-primary-600 mr-3" />
+                <div>
+                  <div className="text-2xl font-bold text-secondary-900">{stats.total_goals}</div>
+                  <div className="text-sm text-secondary-600">Toplam Hedef</div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-soft-md p-6">
+              <div className="flex items-center">
+                <CheckCircle2 className="w-8 h-8 text-green-600 mr-3" />
+                <div>
+                  <div className="text-2xl font-bold text-secondary-900">{stats.completed_goals}</div>
+                  <div className="text-sm text-secondary-600">Tamamlanan</div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-soft-md p-6">
+              <div className="flex items-center">
+                <Loader2 className="w-8 h-8 text-blue-600 mr-3" />
+                <div>
+                  <div className="text-2xl font-bold text-secondary-900">{stats.active_goals}</div>
+                  <div className="text-sm text-secondary-600">Aktif</div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-soft-md p-6">
+              <div className="flex items-center">
+                <BarChart3 className="w-8 h-8 text-purple-600 mr-3" />
+                <div>
+                  <div className="text-2xl font-bold text-secondary-900">{Math.round(stats.completion_rate)}%</div>
+                  <div className="text-sm text-secondary-600">Tamamlama Oranı</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Category Manager */}
+          <CategoryManager
+            categories={categories}
+            onCategoriesChange={setCategories}
+            selectedCategoryId={selectedCategoryId}
+            onCategorySelect={setSelectedCategoryId}
+          />
+
           {showApiInput ? (
             <div className="bg-white rounded-2xl shadow-soft-xl p-8 mb-8">
               <h2 className="text-xl font-semibold text-secondary-900 mb-4 flex items-center">
@@ -338,21 +386,79 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
           )}
 
           <div className="bg-white rounded-2xl shadow-soft-xl p-8 mb-8">
-            <div className="flex gap-4 mb-8">
-              <textarea
-                value={newGoal}
-                onChange={(e) => setNewGoal(e.target.value)}
-                placeholder="Bir sonraki büyük hedefiniz nedir? Markdown formatını kullanabilirsiniz."
-                className="flex-1 p-4 border-2 border-secondary-200 rounded-xl text-secondary-800 placeholder-secondary-400 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all min-h-[100px] resize-y"
-                disabled={loading}
-              />
-              <button
-                onClick={addGoal}
-                disabled={loading}
-                className="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all disabled:opacity-50 font-semibold shadow-soft-md hover:shadow-soft-xl"
-              >
-                Hedef Ekle
-              </button>
+            <div className="space-y-6">
+              {/* Goal Description */}
+              <div>
+                <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  Hedef Açıklaması
+                </label>
+                <textarea
+                  value={newGoal}
+                  onChange={(e) => setNewGoal(e.target.value)}
+                  placeholder="Bir sonraki büyük hedefiniz nedir? Markdown formatını kullanabilirsiniz."
+                  className="w-full p-4 border-2 border-secondary-200 rounded-xl text-secondary-800 placeholder-secondary-400 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all min-h-[100px] resize-y"
+                  disabled={loading}
+                />
+              </div>
+
+              {/* Goal Options */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    Kategori
+                  </label>
+                  <select
+                    value={newGoalCategory}
+                    onChange={(e) => setNewGoalCategory(e.target.value)}
+                    className="w-full p-3 border-2 border-secondary-200 rounded-xl text-secondary-800 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all"
+                  >
+                    <option value="">Kategori seçin (opsiyonel)</option>
+                    {categories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    Öncelik
+                  </label>
+                  <select
+                    value={newGoalPriority}
+                    onChange={(e) => setNewGoalPriority(e.target.value)}
+                    className="w-full p-3 border-2 border-secondary-200 rounded-xl text-secondary-800 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all"
+                  >
+                    <option value="low">Düşük</option>
+                    <option value="medium">Orta</option>
+                    <option value="high">Yüksek</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    Etiketler
+                  </label>
+                  <input
+                    type="text"
+                    value={newGoalTags}
+                    onChange={(e) => setNewGoalTags(e.target.value)}
+                    placeholder="etiket1, etiket2, etiket3"
+                    className="w-full p-3 border-2 border-secondary-200 rounded-xl text-secondary-800 placeholder-secondary-400 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all"
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  onClick={addGoal}
+                  disabled={loading}
+                  className="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all disabled:opacity-50 font-semibold shadow-soft-md hover:shadow-soft-xl"
+                >
+                  {loading ? 'Ekleniyor...' : 'Hedef Ekle'}
+                </button>
+              </div>
             </div>
 
             <AnimatePresence>
