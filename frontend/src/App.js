@@ -181,7 +181,7 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
 
   const deleteGoal = (goalId) => {
     setGoals(prevGoals => prevGoals.filter(goal => goal.id !== goalId));
-    showMessage('Goal deleted successfully!');
+    showMessage('Hedef başarıyla silindi!');
   };
 
   return (
