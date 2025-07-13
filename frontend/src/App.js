@@ -106,22 +106,33 @@ function App() {
     setShowApiInput(true);
   };
 
-  const addGoal = () => {
+  const addGoal = async () => {
     if (!newGoal.trim()) {
       showMessage('Lütfen bir hedef açıklaması girin', true);
       return;
     }
     
-    const goalId = Date.now().toString();
-    const newGoalObj = {
-      id: goalId,
-      description: newGoal,
-      createdAt: new Date().toISOString(),
-    };
-    
-    setGoals(prevGoals => [...prevGoals, newGoalObj]);
-    setNewGoal('');
-    showMessage('Hedef başarıyla eklendi!');
+    setLoading(true);
+    try {
+      const goalData = {
+        description: newGoal,
+        category_id: newGoalCategory || null,
+        tags: newGoalTags ? newGoalTags.split(',').map(tag => tag.trim()) : [],
+        priority: newGoalPriority
+      };
+      
+      const newGoalObj = await ApiService.createGoal(goalData);
+      setGoals(prevGoals => [newGoalObj, ...prevGoals]);
+      setNewGoal('');
+      setNewGoalCategory('');
+      setNewGoalTags('');
+      setNewGoalPriority('medium');
+      showMessage('Hedef başarıyla eklendi!');
+      loadStats();
+    } catch (error) {
+      showMessage('Hedef eklenemedi: ' + error.message, true);
+    }
+    setLoading(false);
   };
 
   const getAIGuidance = async (goalId) => {
