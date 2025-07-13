@@ -195,11 +195,11 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
           <div className="flex items-center justify-center mb-4">
             <Target className="w-12 h-12 text-primary-600 mr-4" />
             <h1 className="text-5xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-800">
-              AI Goal Coach
+              AI Hedef Koçu
             </h1>
           </div>
           <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
-            Your intelligent companion for breaking down goals into actionable steps
+            Hedeflerinizi eyleme dönüştürülmüş adımlara ayıran akıllı arkadaşınız
           </p>
         </motion.header>
 
