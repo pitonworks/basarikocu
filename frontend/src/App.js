@@ -280,7 +280,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
                 disabled={loading}
                 className="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all disabled:opacity-50 font-semibold shadow-soft-md hover:shadow-soft-xl"
               >
-                Add Goal
+                Hedef Ekle
               </button>
             </div>
 
