@@ -234,7 +234,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
             <div className="bg-white rounded-2xl shadow-soft-xl p-8 mb-8">
               <h2 className="text-xl font-semibold text-secondary-900 mb-4 flex items-center">
                 <Key className="w-6 h-6 mr-2 text-primary-600" />
-                Set Your OpenAI API Key
+                OpenAI API Anahtarınızı Ayarlayın
               </h2>
               <div className="flex gap-4">
                 <input
