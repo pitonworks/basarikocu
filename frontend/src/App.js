@@ -126,7 +126,7 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
             },
             {
               role: "user",
-              content: `Help me achieve this goal: ${goal.description}. Please provide a concise response with up to 5 steps and 3 resources.`
+              content: `Bu hedefe ulaşmama yardım et: ${goal.description}. Lütfen 5 adıma kadar ve 3 kaynak içeren kısa bir yanıt ver.`
             }
           ],
           max_tokens: 500, // Limiting response size
