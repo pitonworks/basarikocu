@@ -224,15 +224,35 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
           : g
       ));
       showMessage('AI rehberliği başarıyla oluşturuldu!');
+      
+      // Update goal in backend
+      await ApiService.updateGoal(goalId, { steps, resources });
+      loadStats();
     } catch (error) {
       showMessage(error.message, true);
     }
     setLoading(false);
   };
 
-  const deleteGoal = (goalId) => {
-    setGoals(prevGoals => prevGoals.filter(goal => goal.id !== goalId));
-    showMessage('Hedef başarıyla silindi!');
+  const deleteGoal = async (goalId) => {
+    try {
+      await ApiService.deleteGoal(goalId);
+      setGoals(prevGoals => prevGoals.filter(goal => goal.id !== goalId));
+      showMessage('Hedef başarıyla silindi!');
+      loadStats();
+    } catch (error) {
+      showMessage('Hedef silinemedi: ' + error.message, true);
+    }
+  };
+
+  const handleProgressUpdate = async (goalId, newPercentage) => {
+    // Update local state
+    setGoals(prevGoals => prevGoals.map(g => 
+      g.id === goalId 
+        ? { ...g, progress_percentage: newPercentage }
+        : g
+    ));
+    loadStats();
   };
 
   return (
