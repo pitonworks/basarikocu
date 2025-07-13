@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Target, CheckCircle2, BookOpen, AlertCircle, Loader2, Key, ChevronDown, ChevronRight } from 'lucide-react';
+import { Target, CheckCircle2, BookOpen, AlertCircle, Loader2, Key, ChevronDown, ChevronRight, Filter, BarChart3 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import ApiService from './services/api';
+import CategoryManager from './components/CategoryManager';
+import ProgressTracker from './components/ProgressTracker';
 import './App.css';
 
 function App() {
