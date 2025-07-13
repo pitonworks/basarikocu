@@ -248,7 +248,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
                   onClick={saveApiKey}
                   className="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all font-semibold shadow-soft-md hover:shadow-soft-xl"
                 >
-                  Save Key
+                  Anahtarı Kaydet
                 </button>
               </div>
               <p className="mt-4 text-sm text-secondary-600">
