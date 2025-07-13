@@ -68,7 +68,7 @@ function App() {
 
   const addGoal = () => {
     if (!newGoal.trim()) {
-      showMessage('Please enter a goal description', true);
+      showMessage('Lütfen bir hedef açıklaması girin', true);
       return;
     }
     
@@ -81,7 +81,7 @@ function App() {
     
     setGoals(prevGoals => [...prevGoals, newGoalObj]);
     setNewGoal('');
-    showMessage('Goal added successfully!');
+    showMessage('Hedef başarıyla eklendi!');
   };
 
   const getAIGuidance = async (goalId) => {
