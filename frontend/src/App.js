@@ -139,7 +139,7 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error?.message || 'Failed to get AI guidance. Please check your API key.');
+        throw new Error(errorData.error?.message || 'AI rehberliği alınamadı. Lütfen API anahtarınızı kontrol edin.');
       }
 
       const data = await response.json();
@@ -149,16 +149,16 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
       const steps = [];
       const resources = [];
       
-      if (content.includes('# Steps:')) {
-        const parts = content.split('# Steps:');
-        const stepsSection = parts[1].split('# Resources:')[0];
+      if (content.includes('# Adımlar:')) {
+        const parts = content.split('# Adımlar:');
+        const stepsSection = parts[1].split('# Kaynaklar:')[0];
         steps.push(...stepsSection.split('\n')
           .map(step => step.trim())
           .filter(step => step && !step.startsWith('#') && !step.startsWith('-')));
       }
 
-      if (content.includes('# Resources:')) {
-        const resourcesSection = content.split('# Resources:')[1];
+      if (content.includes('# Kaynaklar:')) {
+        const resourcesSection = content.split('# Kaynaklar:')[1];
         resources.push(...resourcesSection.split('\n')
           .map(resource => ({
             title: resource.trim(),
@@ -172,7 +172,7 @@ Not: Vurgu için markdown formatını (*italik*) ve **kalın** metin kullanın. 
           ? { ...g, steps, resources }
           : g
       ));
-      showMessage('AI guidance generated successfully!');
+      showMessage('AI rehberliği başarıyla oluşturuldu!');
     } catch (error) {
       showMessage(error.message, true);
     }
