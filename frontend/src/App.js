@@ -33,12 +33,41 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem('goals', JSON.stringify(goals));
-  }, [goals]);
+    loadGoals();
+    loadCategories();
+    loadStats();
+  }, [selectedCategoryId]);
 
   useEffect(() => {
     localStorage.setItem('collapsedGoals', JSON.stringify(collapsedGoals));
   }, [collapsedGoals]);
+
+  const loadGoals = async () => {
+    try {
+      const goalsData = await ApiService.getGoals(selectedCategoryId);
+      setGoals(goalsData);
+    } catch (error) {
+      showMessage('Hedefler yüklenemedi: ' + error.message, true);
+    }
+  };
+
+  const loadCategories = async () => {
+    try {
+      const categoriesData = await ApiService.getCategories();
+      setCategories(categoriesData);
+    } catch (error) {
+      showMessage('Kategoriler yüklenemedi: ' + error.message, true);
+    }
+  };
+
+  const loadStats = async () => {
+    try {
+      const statsData = await ApiService.getStats();
+      setStats(statsData);
+    } catch (error) {
+      console.error('İstatistikler yüklenemedi:', error);
+    }
+  };
 
   const toggleGoal = (goalId) => {
     setCollapsedGoals(prev => ({
