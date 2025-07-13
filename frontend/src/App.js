@@ -52,12 +52,12 @@ function App() {
 
   const saveApiKey = () => {
     if (!apiKey.trim()) {
-      showMessage('Please enter your OpenAI API key', true);
+      showMessage('Lütfen OpenAI API anahtarınızı girin', true);
       return;
     }
     localStorage.setItem('openai_api_key', apiKey);
     setShowApiInput(false);
-    showMessage('API key saved successfully!');
+    showMessage('API anahtarı başarıyla kaydedildi!');
   };
 
   const resetApiKey = () => {
