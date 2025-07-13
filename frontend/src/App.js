@@ -86,7 +86,7 @@ function App() {
 
   const getAIGuidance = async (goalId) => {
     if (!apiKey) {
-      showMessage('Please set your OpenAI API key first', true);
+      showMessage('Lütfen önce OpenAI API anahtarınızı ayarlayın', true);
       setShowApiInput(true);
       return;
     }
