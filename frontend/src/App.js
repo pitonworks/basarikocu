@@ -293,7 +293,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
                   className="text-center py-8"
                 >
                   <Loader2 className="w-8 h-8 animate-spin text-primary-500 mx-auto" />
-                  <p className="mt-4 text-secondary-600">Getting AI guidance...</p>
+                  <p className="mt-4 text-secondary-600">AI rehberliği alınıyor...</p>
                 </motion.div>
               )}
             </AnimatePresence>
