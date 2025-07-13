@@ -1,0 +1,378 @@
+{
+  "summary": {
+    "health": true,
+    "categories": true,
+    "goals": true,
+    "progress": true,
+    "statistics": true,
+    "error_handling": true
+  },
+  "detailed_results": [
+    {
+      "test": "Health Check",
+      "success": true,
+      "message": "Health endpoint working correctly",
+      "timestamp": "2025-07-13T14:56:53.841205",
+      "response_data": {
+        "status": "healthy",
+        "timestamp": "2025-07-13T14:56:53.840276"
+      }
+    },
+    {
+      "test": "Get Categories (Empty)",
+      "success": true,
+      "message": "Retrieved 0 categories",
+      "timestamp": "2025-07-13T14:56:53.848663",
+      "response_data": {
+        "count": 0
+      }
+    },
+    {
+      "test": "Create Category: Ki\u015fisel Geli\u015fim",
+      "success": true,
+      "message": "Category created successfully",
+      "timestamp": "2025-07-13T14:56:53.861327",
+      "response_data": {
+        "id": "8d169464-46b4-4437-a052-2adfa9425eaf",
+        "name": "Ki\u015fisel Geli\u015fim",
+        "description": "Ki\u015fisel beceri ve yetenekleri geli\u015ftirme",
+        "color": "#10b981",
+        "created_at": "2025-07-13T14:56:53.849893"
+      }
+    },
+    {
+      "test": "Create Category: Kariyer",
+      "success": true,
+      "message": "Category created successfully",
+      "timestamp": "2025-07-13T14:56:53.864198",
+      "response_data": {
+        "id": "d75bd72e-07d9-49d9-8d44-2bf4078032c1",
+        "name": "Kariyer",
+        "description": "Profesyonel hedefler ve kariyer geli\u015fimi",
+        "color": "#3b82f6",
+        "created_at": "2025-07-13T14:56:53.862530"
+      }
+    },
+    {
+      "test": "Create Category: Sa\u011fl\u0131k ve Fitness",
+      "success": true,
+      "message": "Category created successfully",
+      "timestamp": "2025-07-13T14:56:53.866917",
+      "response_data": {
+        "id": "091c882a-0a56-403b-a387-666345918ee5",
+        "name": "Sa\u011fl\u0131k ve Fitness",
+        "description": "Fiziksel ve mental sa\u011fl\u0131k hedefleri",
+        "color": "#ef4444",
+        "created_at": "2025-07-13T14:56:53.865328"
+      }
+    },
+    {
+      "test": "Create Category: E\u011fitim",
+      "success": true,
+      "message": "Category created successfully",
+      "timestamp": "2025-07-13T14:56:53.869670",
+      "response_data": {
+        "id": "0536ed28-b241-4582-b107-f26dd6085526",
+        "name": "E\u011fitim",
+        "description": "\u00d6\u011frenme ve akademik hedefler",
+        "color": "#8b5cf6",
+        "created_at": "2025-07-13T14:56:53.868021"
+      }
+    },
+    {
+      "test": "Get Categories (After Creation)",
+      "success": true,
+      "message": "Retrieved 4 categories",
+      "timestamp": "2025-07-13T14:56:53.872290",
+      "response_data": {
+        "count": 4
+      }
+    },
+    {
+      "test": "Delete Category",
+      "success": true,
+      "message": "Category deleted successfully",
+      "timestamp": "2025-07-13T14:56:53.875023",
+      "response_data": {
+        "message": "Kategori ba\u015far\u0131yla silindi"
+      }
+    },
+    {
+      "test": "Get Goals (Empty)",
+      "success": true,
+      "message": "Retrieved 0 goals",
+      "timestamp": "2025-07-13T14:56:53.877803",
+      "response_data": {
+        "count": 0
+      }
+    },
+    {
+      "test": "Create Goal: Python programlama dilinde uzm...",
+      "success": true,
+      "message": "Goal created successfully",
+      "timestamp": "2025-07-13T14:56:53.890082",
+      "response_data": {
+        "id": "ca3a8619-4cf0-457c-851e-b4d9d03db5d7",
+        "description": "Python programlama dilinde uzmanla\u015fmak",
+        "category_id": "8d169464-46b4-4437-a052-2adfa9425eaf",
+        "tags": [
+          "programlama",
+          "python",
+          "teknoloji"
+        ],
+        "priority": "high",
+        "status": "active",
+        "progress_percentage": 0.0,
+        "steps": [],
+        "resources": [],
+        "created_at": "2025-07-13T14:56:53.879012",
+        "updated_at": "2025-07-13T14:56:53.879015",
+        "completed_at": null
+      }
+    },
+    {
+      "test": "Create Goal: Haftada 3 kez spor yapmak...",
+      "success": true,
+      "message": "Goal created successfully",
+      "timestamp": "2025-07-13T14:56:53.892899",
+      "response_data": {
+        "id": "8c8f8bac-843e-4940-bfe5-e488878b193b",
+        "description": "Haftada 3 kez spor yapmak",
+        "category_id": "091c882a-0a56-403b-a387-666345918ee5",
+        "tags": [
+          "sa\u011fl\u0131k",
+          "spor",
+          "rutin"
+        ],
+        "priority": "medium",
+        "status": "active",
+        "progress_percentage": 0.0,
+        "steps": [],
+        "resources": [],
+        "created_at": "2025-07-13T14:56:53.891272",
+        "updated_at": "2025-07-13T14:56:53.891275",
+        "completed_at": null
+      }
+    },
+    {
+      "test": "Create Goal: Yeni bir dil \u00f6\u011frenmek (\u0130spanyo...",
+      "success": true,
+      "message": "Goal created successfully",
+      "timestamp": "2025-07-13T14:56:53.895958",
+      "response_data": {
+        "id": "459b8389-4471-4d07-bc61-8449b383a20e",
+        "description": "Yeni bir dil \u00f6\u011frenmek (\u0130spanyolca)",
+        "category_id": "d75bd72e-07d9-49d9-8d44-2bf4078032c1",
+        "tags": [
+          "dil",
+          "\u00f6\u011frenme",
+          "k\u00fclt\u00fcr"
+        ],
+        "priority": "low",
+        "status": "active",
+        "progress_percentage": 0.0,
+        "steps": [],
+        "resources": [],
+        "created_at": "2025-07-13T14:56:53.894203",
+        "updated_at": "2025-07-13T14:56:53.894206",
+        "completed_at": null
+      }
+    },
+    {
+      "test": "Get Specific Goal",
+      "success": true,
+      "message": "Goal retrieved successfully",
+      "timestamp": "2025-07-13T14:56:53.898830",
+      "response_data": {
+        "id": "ca3a8619-4cf0-457c-851e-b4d9d03db5d7",
+        "description": "Python programlama dilinde uzmanla\u015fmak",
+        "category_id": "8d169464-46b4-4437-a052-2adfa9425eaf",
+        "tags": [
+          "programlama",
+          "python",
+          "teknoloji"
+        ],
+        "priority": "high",
+        "status": "active",
+        "progress_percentage": 0.0,
+        "steps": [],
+        "resources": [],
+        "created_at": "2025-07-13T14:56:53.879000",
+        "updated_at": "2025-07-13T14:56:53.879000",
+        "completed_at": null
+      }
+    },
+    {
+      "test": "Update Goal (Add Steps)",
+      "success": true,
+      "message": "Goal updated with steps and resources",
+      "timestamp": "2025-07-13T14:56:53.902631",
+      "response_data": {
+        "id": "ca3a8619-4cf0-457c-851e-b4d9d03db5d7",
+        "description": "Python programlama dilinde uzmanla\u015fmak",
+        "category_id": "8d169464-46b4-4437-a052-2adfa9425eaf",
+        "tags": [
+          "programlama",
+          "python",
+          "teknoloji"
+        ],
+        "priority": "high",
+        "status": "active",
+        "progress_percentage": 0.0,
+        "steps": [
+          "Python temellerini \u00f6\u011fren",
+          "Veri yap\u0131lar\u0131 ve algoritmalar \u00e7al\u0131\u015f",
+          "Web framework'leri \u00f6\u011fren (Django/Flask)",
+          "Proje geli\u015ftir",
+          "A\u00e7\u0131k kaynak projelere katk\u0131da bulun"
+        ],
+        "resources": [
+          {
+            "type": "book",
+            "title": "Python Crash Course",
+            "url": "https://example.com"
+          },
+          {
+            "type": "course",
+            "title": "Python for Everybody",
+            "url": "https://coursera.org"
+          },
+          {
+            "type": "website",
+            "title": "Python.org",
+            "url": "https://python.org"
+          }
+        ],
+        "created_at": "2025-07-13T14:56:53.879000",
+        "updated_at": "2025-07-13T14:56:53.900000",
+        "completed_at": null
+      }
+    },
+    {
+      "test": "Get Goals (Filter by Category)",
+      "success": true,
+      "message": "Retrieved 1 goals for category",
+      "timestamp": "2025-07-13T14:56:53.905650",
+      "response_data": {
+        "count": 1
+      }
+    },
+    {
+      "test": "Get Goals (Filter by Status)",
+      "success": true,
+      "message": "Retrieved 3 active goals",
+      "timestamp": "2025-07-13T14:56:53.908382",
+      "response_data": {
+        "count": 3
+      }
+    },
+    {
+      "test": "Get Goal Progress (Empty)",
+      "success": true,
+      "message": "Retrieved 0 progress records",
+      "timestamp": "2025-07-13T14:56:53.910976",
+      "response_data": {
+        "count": 0
+      }
+    },
+    {
+      "test": "Update Progress Step 0",
+      "success": true,
+      "message": "Progress updated, percentage: 20.0%",
+      "timestamp": "2025-07-13T14:56:53.926391",
+      "response_data": {
+        "message": "\u0130lerleme ba\u015far\u0131yla g\u00fcncellendi",
+        "progress_percentage": 20.0
+      }
+    },
+    {
+      "test": "Update Progress Step 1",
+      "success": true,
+      "message": "Progress updated, percentage: 40.0%",
+      "timestamp": "2025-07-13T14:56:53.932123",
+      "response_data": {
+        "message": "\u0130lerleme ba\u015far\u0131yla g\u00fcncellendi",
+        "progress_percentage": 40.0
+      }
+    },
+    {
+      "test": "Update Progress Step 2",
+      "success": true,
+      "message": "Progress updated, percentage: 40.0%",
+      "timestamp": "2025-07-13T14:56:53.937643",
+      "response_data": {
+        "message": "\u0130lerleme ba\u015far\u0131yla g\u00fcncellendi",
+        "progress_percentage": 40.0
+      }
+    },
+    {
+      "test": "Get Goal Progress (After Updates)",
+      "success": true,
+      "message": "Retrieved 3 progress records",
+      "timestamp": "2025-07-13T14:56:53.940185",
+      "response_data": {
+        "count": 3,
+        "progress": [
+          {
+            "id": "6a7447f7-5db1-4009-9074-a32f9a80409e",
+            "goal_id": "ca3a8619-4cf0-457c-851e-b4d9d03db5d7",
+            "step_index": 0,
+            "completed": true,
+            "completed_at": "2025-07-13T14:56:53.912000",
+            "notes": "Python temellerini tamamlad\u0131m"
+          },
+          {
+            "id": "4ec3c195-383b-43ff-9593-070d63e9d845",
+            "goal_id": "ca3a8619-4cf0-457c-851e-b4d9d03db5d7",
+            "step_index": 1,
+            "completed": true,
+            "completed_at": "2025-07-13T14:56:53.928000",
+            "notes": "Veri yap\u0131lar\u0131 konusunu bitirdim"
+          },
+          {
+            "id": "d6fdebeb-c0bc-4eab-aa27-ae75d673fe25",
+            "goal_id": "ca3a8619-4cf0-457c-851e-b4d9d03db5d7",
+            "step_index": 2,
+            "completed": false,
+            "completed_at": null,
+            "notes": "Web framework'leri \u00f6\u011frenmeye ba\u015flad\u0131m"
+          }
+        ]
+      }
+    },
+    {
+      "test": "Get Statistics",
+      "success": true,
+      "message": "Statistics retrieved successfully",
+      "timestamp": "2025-07-13T14:56:53.944160",
+      "response_data": {
+        "total_goals": 3,
+        "completed_goals": 0,
+        "active_goals": 3,
+        "completion_rate": 0.0
+      }
+    },
+    {
+      "test": "Error Handling: Non-existent Goal",
+      "success": true,
+      "message": "Correctly returned 404 for non-existent goal",
+      "timestamp": "2025-07-13T14:56:53.946712",
+      "response_data": null
+    },
+    {
+      "test": "Error Handling: Non-existent Category",
+      "success": true,
+      "message": "Correctly returned 404 for non-existent category",
+      "timestamp": "2025-07-13T14:56:53.949102",
+      "response_data": null
+    },
+    {
+      "test": "Error Handling: Invalid Goal Data",
+      "success": false,
+      "message": "Expected 400/422, got 200",
+      "timestamp": "2025-07-13T14:56:53.951814",
+      "response_data": null
+    }
+  ],
+  "timestamp": "2025-07-13T14:56:53.968059"
+}
