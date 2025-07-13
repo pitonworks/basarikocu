@@ -261,7 +261,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
                 onClick={resetApiKey}
                 className="text-sm text-secondary-600 hover:text-secondary-800"
               >
-                Reset API Key
+                API Anahtarını Sıfırla
               </button>
             </div>
           )}
