@@ -353,7 +353,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
                           ) : (
                             <Target className="w-4 h-4 mr-2" />
                           )}
-                          Get AI Guidance
+                          AI Rehberliği Al
                         </button>
                       )}
                       <button
