@@ -271,7 +271,7 @@ Note: Use markdown formatting for emphasis (*italic*) and **bold** text. Keep re
               <textarea
                 value={newGoal}
                 onChange={(e) => setNewGoal(e.target.value)}
-                placeholder="What's your next big goal? You can use markdown formatting."
+                placeholder="Bir sonraki büyük hedefiniz nedir? Markdown formatını kullanabilirsiniz."
                 className="flex-1 p-4 border-2 border-secondary-200 rounded-xl text-secondary-800 placeholder-secondary-400 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 transition-all min-h-[100px] resize-y"
                 disabled={loading}
               />
